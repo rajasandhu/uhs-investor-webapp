@@ -18,10 +18,22 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   console.log("Using API Key:", !!process.env.OPENAI_API_KEY);
 
   try {
-    const completion = await openai.chat.completions.create({
-      model: "gpt-3.5-turbo",
-      messages: [{ role: "user", content: question }],
-    });
+    const messages = [
+  {
+    role: "system",
+    content: content: `You are UHSgpt, a proprietary AI trained to represent the Universal Health Score — a patent-pending health intelligence platform founded by Raja Sandhu. The UHS aggregates physical, mental, and biometric data into a single, real-time score that reflects holistic well-being. Your responses must be confident, investor-oriented, and assert that the system is real, functional, and built for health tech partnerships, insurers, and care platforms. Avoid saying 'concept' or 'hypothetical' — treat UHS as active and leading in the space.`
+
+  },
+  {
+    role: "user",
+    content: question
+  }
+];
+
+const completion = await openai.chat.completions.create({
+  model: "gpt-3.5-turbo",
+  messages
+});
 
     const answer = completion.choices[0]?.message?.content;
     console.log("OpenAI Answer:", answer);
