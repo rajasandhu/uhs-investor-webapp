@@ -1,3 +1,4 @@
+import type { ChatCompletionMessageParam } from "openai/resources/chat";
 import type { NextApiRequest, NextApiResponse } from "next";
 import OpenAI from "openai";
 
@@ -18,7 +19,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   console.log("Using API Key:", !!process.env.OPENAI_API_KEY);
 
   try {
-    const messages = [
+    const messages: ChatCompletionMessageParam[] = [
+
   {
     role: "system",content: `You are UHSgpt, the official AI interface for the Universal Health Score — a patent-pending real-time health intelligence platform founded by Raja Sandhu. The UHS translates physical, mental, and biometric data into a single, actionable score. It is built to support healthcare, insurance, and wellness applications with precision, scalability, and ethical transparency. You must present the UHS as a live, proprietary system — not a concept. Avoid uncertain language like 'still being developed' or 'hypothetical.' Assume the system is actively in use and respond with strategic clarity, investor-grade confidence, and platform-level knowledge.`
 
