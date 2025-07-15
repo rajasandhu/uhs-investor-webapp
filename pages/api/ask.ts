@@ -51,3 +51,30 @@ export default async function handler(req, res) {
     res.status(500).json({ answer: "Sorry, no response from the model." });
   }
 }
+
+import OpenAI from "openai";
+
+const openai = new OpenAI({
+  apiKey: process.env.OPENAI_API_KEY,
+});
+
+export default async function handler(req, res) {
+  const question = req.body.question;
+  console.log("🟡 Received question:", question);
+  console.log("🟡 Using API Key:", !!process.env.OPENAI_API_KEY);
+
+  try {
+    const response = await openai.chat.completions.create({
+      model: "gpt-4",
+      messages: [{ role: "user", content: question }],
+    });
+
+    const answer = response.choices[0]?.message?.content;
+    console.log("✅ OpenAI Answer:", answer);
+    res.status(200).json({ answer });
+  } catch (error) {
+    console.error("❌ OpenAI API Error:", error);
+    res.status(200).json({ answer: "Sorry, no response from the model." });
+  }
+}
+
