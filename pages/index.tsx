@@ -35,32 +35,32 @@ export default function Home() {
   }, [messages]);
 
   return (
-    <main className="min-h-screen bg-gray-100 text-black flex flex-col">
-      <header className="bg-white shadow p-4 sticky top-0 z-10">
-        <h1 className="text-2xl font-bold text-center">UHS Investor Q&A</h1>
+    <main className="min-h-screen bg-gray-50 text-black flex flex-col">
+      <header className="bg-white shadow p-6">
+        <h1 className="text-3xl font-bold text-center">UHS Investor Q&A</h1>
       </header>
 
-      <div className="p-4 max-w-2xl w-full mx-auto">
-        <div className="flex flex-wrap gap-2 mb-4">
+      <div className="p-6 max-w-2xl w-full mx-auto">
+        <div className="flex flex-wrap gap-3 mb-6 justify-center">
           {presetQuestions.map((q) => (
             <button
               key={q}
               onClick={() => handleAsk(q)}
-              className="bg-white border border-gray-300 px-3 py-2 rounded-full text-sm hover:bg-gray-200"
+              className="bg-white border border-gray-300 px-4 py-2 rounded-full text-sm hover:bg-gray-200 transition"
             >
               {q}
             </button>
           ))}
         </div>
 
-        <div className="bg-white rounded-xl p-4 shadow max-h-[60vh] overflow-y-auto space-y-4">
+        <div className="bg-white rounded-xl p-4 shadow max-h-[50vh] overflow-y-auto space-y-4">
           {messages.map((msg, idx) => (
             <div
               key={idx}
               className={`whitespace-pre-wrap px-4 py-2 rounded-xl max-w-[80%] ${
                 msg.role === "user"
                   ? "bg-blue-100 self-end ml-auto"
-                  : "bg-gray-200 self-start"
+                  : "bg-gray-100 self-start"
               }`}
             >
               <strong>{msg.role === "user" ? "You" : "UHSgpt"}</strong>: {msg.content}
@@ -68,10 +68,8 @@ export default function Home() {
           ))}
           <div ref={bottomRef} />
         </div>
-      </div>
 
-      <div className="mt-auto w-full bg-white shadow-inner p-4 sticky bottom-0">
-        <div className="flex max-w-2xl mx-auto gap-2">
+        <div className="mt-6 flex gap-2">
           <input
             type="text"
             value={input}
@@ -90,4 +88,3 @@ export default function Home() {
     </main>
   );
 }
-
