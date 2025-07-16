@@ -80,6 +80,8 @@ export default function Home() {
               </div>
             ))}
             <div ref={bottomRef} />
+<div className="hidden from-[#141414] to-[#292929] bg-gray-800/30"></div>
+
           </div>
         )}
       </main>
