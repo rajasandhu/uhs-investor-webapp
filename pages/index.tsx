@@ -109,3 +109,7 @@ export default function Home() {
   );
 }
 <div className=\"hidden from-[#141414] to-[#292929] bg-gray-800/30\"></div>
+      </main>
+    </div>
+  );
+}
