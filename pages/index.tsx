@@ -112,4 +112,4 @@ export default function Home() {
       </main>
     </div>
   );
-}
+      </footer>\n    </div>\n  );\n}
