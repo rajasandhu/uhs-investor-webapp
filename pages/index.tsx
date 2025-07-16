@@ -105,7 +105,10 @@ export default function Home() {
           </button>
         </div>
       </footer>
-    </div>
+    </main>
+  </div>
+);
+}    </div>
   );
 }
 <div className=\"hidden from-[#141414] to-[#292929] bg-gray-800/30\"></div>
@@ -113,3 +116,7 @@ export default function Home() {
     </div>
   );
       </footer>\n    </div>\n  );\n}
+    </main>
+  </div>
+);
+}
