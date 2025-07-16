@@ -39,8 +39,8 @@ export default function Home() {
   }, [messages]);
 
   return (
-    <div className="flex flex-col h-screen bg-black text-white">
-      <header className="p-6 border-b border-gray-700 bg-black">
+    <div className="flex flex-col h-screen bg-black text-gray-300">
+      <header className="p-6  bg-black">
         <img src="/logo.svg" alt="UHS Logo" className="h-10 mx-auto" />
       </header>
 
@@ -52,7 +52,7 @@ export default function Home() {
                 <button
                   key={q}
                   onClick={() => handleAsk(q)}
-                  className="bg-gray-700 hover:bg-gray-600 px-4 py-3 rounded-lg shadow text-white transition"
+                  className="bg-gray-800 hover:bg-gray-600 px-4 py-3 rounded-lg text-gray-300 transition"
                 >
                   {q}
                 </button>
@@ -63,14 +63,14 @@ export default function Home() {
             </p>
           </>
         ) : (
-          <div className="w-full bg-gray-800 rounded-lg p-4 space-y-4">
+          <div className="w-full bg-black rounded-lg p-4 space-y-4">
             {messages.map((msg, idx) => (
               <div
                 key={idx}
                 className={`whitespace-pre-wrap px-4 py-3 rounded-lg max-w-[80%] ${
                   msg.role === "user"
-                    ? "bg-gray-700 self-end ml-auto"
-                    : "bg-gray-700 self-start"
+                    ? "bg-gray-800 self-end ml-auto"
+                    : "bg-gray-800 self-start"
                 }`}
               >
                 <strong className="block mb-1 text-xs uppercase tracking-wide opacity-70">
@@ -84,18 +84,18 @@ export default function Home() {
         )}
       </main>
 
-      <footer className="p-4 border-t border-gray-700">
+      <footer className="p-4 ">
         <div className="max-w-3xl mx-auto flex gap-2">
           <input
             type="text"
             value={input}
             onChange={(e) => setInput(e.target.value)}
             placeholder="Ask your question..."
-            className="flex-1 bg-black text-white border border-gray-600 rounded-lg p-3 placeholder-gray-400"
+            className="flex-1 bg-black text-gray-300 border border-gray-600 rounded-lg p-3 placeholder-gray-400"
           />
           <button
             onClick={() => handleAsk()}
-            className="bg-gray-700 hover:bg-gray-600 text-white px-4 py-2 rounded-lg"
+            className="bg-gray-800 hover:bg-gray-600 text-gray-300 px-4 py-2 rounded-lg"
           >
             Ask
           </button>
