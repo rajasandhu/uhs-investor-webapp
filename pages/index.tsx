@@ -10,7 +10,11 @@ export default function Home() {
     "How is UHS monetized?",
     "How does it integrate mental and biometric data?",
     "What’s the competitive advantage of UHS?",
-    "Why should investors take this seriously?"
+    "Why should investors take this seriously?",
+    "How does UHS enable insurance innovation?",
+    "What industries can integrate with UHS?",
+    "How secure is user health data in UHS?",
+    "Is UHS patent-protected?"
   ];
 
   const handleAsk = async (presetQuestion?: string) => {
@@ -35,56 +39,68 @@ export default function Home() {
   }, [messages]);
 
   return (
-    <main className="min-h-screen bg-gray-50 text-black flex flex-col">
-      <header className="bg-white shadow p-6">
-        <h1 className="text-3xl font-bold text-center">UHS Investor Q&A</h1>
+    <div className="flex flex-col h-screen bg-gray-900 text-white">
+      <header className="p-6 border-b border-gray-700 bg-gray-900">
+        <img src="/logo.svg" alt="UHS Logo" className="h-10 mx-auto" />
       </header>
 
-      <div className="p-6 max-w-2xl w-full mx-auto">
-        <div className="flex flex-wrap gap-3 mb-6 justify-center">
-          {presetQuestions.map((q) => (
-            <button
-              key={q}
-              onClick={() => handleAsk(q)}
-              className="bg-white border border-gray-300 px-4 py-2 rounded-full text-sm hover:bg-gray-200 transition"
-            >
-              {q}
-            </button>
-          ))}
-        </div>
-
-        <div className="bg-white rounded-xl p-4 shadow max-h-[50vh] overflow-y-auto space-y-4">
-          {messages.map((msg, idx) => (
-            <div
-              key={idx}
-              className={`whitespace-pre-wrap px-4 py-2 rounded-xl max-w-[80%] ${
-                msg.role === "user"
-                  ? "bg-blue-100 self-end ml-auto"
-                  : "bg-gray-100 self-start"
-              }`}
-            >
-              <strong>{msg.role === "user" ? "You" : "UHSgpt"}</strong>: {msg.content}
+      <main className="flex-1 overflow-y-auto p-6 max-w-3xl w-full mx-auto">
+        {messages.length === 0 ? (
+          <>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-center text-sm mb-12">
+              {presetQuestions.map((q) => (
+                <button
+                  key={q}
+                  onClick={() => handleAsk(q)}
+                  className="bg-gray-700 hover:bg-gray-600 px-4 py-3 rounded-lg shadow text-white transition"
+                >
+                  {q}
+                </button>
+              ))}
             </div>
-          ))}
-          <div ref={bottomRef} />
-        </div>
+            <p className="text-gray-400 text-xs text-center">
+              Click a prompt above or ask your own question below.
+            </p>
+          </>
+        ) : (
+          <div className="w-full bg-gray-800 rounded-lg p-4 space-y-4">
+            {messages.map((msg, idx) => (
+              <div
+                key={idx}
+                className={`whitespace-pre-wrap px-4 py-3 rounded-lg max-w-[80%] ${
+                  msg.role === "user"
+                    ? "bg-blue-700 self-end ml-auto"
+                    : "bg-gray-700 self-start"
+                }`}
+              >
+                <strong className="block mb-1 text-xs uppercase tracking-wide opacity-70">
+                  {msg.role === "user" ? "You" : "SentientGPT"}
+                </strong>
+                {msg.content}
+              </div>
+            ))}
+            <div ref={bottomRef} />
+          </div>
+        )}
+      </main>
 
-        <div className="mt-6 flex gap-2">
+      <footer className="p-4 border-t border-gray-700">
+        <div className="max-w-3xl mx-auto flex gap-2">
           <input
             type="text"
             value={input}
             onChange={(e) => setInput(e.target.value)}
             placeholder="Ask your question..."
-            className="flex-1 border border-gray-300 rounded-xl p-3"
+            className="flex-1 bg-gray-900 text-white border border-gray-600 rounded-lg p-3 placeholder-gray-400"
           />
           <button
             onClick={() => handleAsk()}
-            className="bg-black text-white px-4 py-2 rounded-xl"
+            className="bg-blue-600 hover:bg-blue-500 text-white px-4 py-2 rounded-lg"
           >
             Ask
           </button>
         </div>
-      </div>
-    </main>
+      </footer>
+    </div>
   );
 }
