@@ -39,8 +39,8 @@ export default function Home() {
   }, [messages]);
 
   return (
-    <div className="flex flex-col h-screen bg-black text-gray-300">
-      <header className="p-6  bg-black">
+    <div className="flex flex-col h-screen bg-black text-gray-500">
+      <header className="p-6 bg-black">
         <img src="/logo.svg" alt="UHS Logo" className="h-10 mx-auto" />
       </header>
 
@@ -52,13 +52,13 @@ export default function Home() {
                 <button
                   key={q}
                   onClick={() => handleAsk(q)}
-                  className="bg-gray-800 hover:bg-gray-600 px-4 py-3 rounded-lg text-gray-300 transition"
+                  className="bg-gray-800 hover:bg-gray-700 px-4 py-3 rounded-lg text-gray-400 transition"
                 >
                   {q}
                 </button>
               ))}
             </div>
-            <p className="text-gray-400 text-xs text-center">
+            <p className="text-gray-600 text-xs text-center">
               Click a prompt above or ask your own question below.
             </p>
           </>
@@ -67,56 +67,40 @@ export default function Home() {
             {messages.map((msg, idx) => (
               <div
                 key={idx}
-                className={`whitespace-pre-wrap px-4 py-3 rounded-lg max-w-[80%] ${
-                  msg.role === "user"
-                    ? "bg-gray-800 self-end ml-auto"
-                    : "bg-gray-800 self-start"
-                }`}
+                className={\`bg-gray-800/30 whitespace-pre-wrap px-4 py-3 rounded-lg max-w-[80%] \${msg.role === "user" ? "self-end ml-auto" : "self-start"}\`}
               >
-                <strong className="block mb-1 text-xs uppercase tracking-wide opacity-70">
+                <strong className="block mb-1 text-xs uppercase tracking-wide text-gray-600">
                   {msg.role === "user" ? "You" : "SentientGPT"}
                 </strong>
-                {msg.content}
+                <span className="text-gray-500">{msg.content}</span>
               </div>
             ))}
             <div ref={bottomRef} />
-              <div className=\"hidden from-[#141414] to-[#292929] bg-gray-800/30\"></div>
-<div className="hidden from-[#141414] to-[#292929] bg-gray-800/30"></div>
-
-
+            <div className="hidden from-[#141414] to-[#292929] bg-gray-800/30"></div>
           </div>
         )}
       </main>
 
-      <footer className="p-4 ">
+      <footer className="p-4">
         <div className="max-w-3xl mx-auto flex gap-2">
           <input
             type="text"
             value={input}
             onChange={(e) => setInput(e.target.value)}
             placeholder="Ask your question..."
-            className="flex-1 bg-black text-gray-300 border border-gray-600 rounded-lg p-3 placeholder-gray-400"
+            className="flex-1 bg-black text-gray-500 border border-gray-700 rounded-lg p-3 placeholder-gray-600"
           />
           <button
             onClick={() => handleAsk()}
-            className="bg-gray-800 hover:bg-gray-600 text-gray-300 px-4 py-2 rounded-lg"
+            className="bg-gradient-to-br from-[#141414] to-[#292929] hover:opacity-90 text-white px-4 py-2 rounded-lg"
           >
             Ask
           </button>
         </div>
+        <p className="text-center text-xs text-gray-600 mt-2">
+          © Sentient Notion Inc. 2025. A Raja Sandhu company. The Universal Health Score is a patent-pending application.
+        </p>
       </footer>
-    </main>
-  </div>
-);
-}    </div>
-  );
-}
-<div className=\"hidden from-[#141414] to-[#292929] bg-gray-800/30\"></div>
-      </main>
     </div>
   );
-      </footer>\n    </div>\n  );\n}
-    </main>
-  </div>
-);
 }
