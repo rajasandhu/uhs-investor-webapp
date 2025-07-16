@@ -39,8 +39,8 @@ export default function Home() {
   }, [messages]);
 
   return (
-    <div className="flex flex-col h-screen bg-gray-900 text-white">
-      <header className="p-6 border-b border-gray-700 bg-gray-900">
+    <div className="flex flex-col h-screen bg-black text-white">
+      <header className="p-6 border-b border-gray-700 bg-black">
         <img src="/logo.svg" alt="UHS Logo" className="h-10 mx-auto" />
       </header>
 
@@ -69,7 +69,7 @@ export default function Home() {
                 key={idx}
                 className={`whitespace-pre-wrap px-4 py-3 rounded-lg max-w-[80%] ${
                   msg.role === "user"
-                    ? "bg-blue-700 self-end ml-auto"
+                    ? "bg-gray-700 self-end ml-auto"
                     : "bg-gray-700 self-start"
                 }`}
               >
@@ -91,11 +91,11 @@ export default function Home() {
             value={input}
             onChange={(e) => setInput(e.target.value)}
             placeholder="Ask your question..."
-            className="flex-1 bg-gray-900 text-white border border-gray-600 rounded-lg p-3 placeholder-gray-400"
+            className="flex-1 bg-black text-white border border-gray-600 rounded-lg p-3 placeholder-gray-400"
           />
           <button
             onClick={() => handleAsk()}
-            className="bg-blue-600 hover:bg-blue-500 text-white px-4 py-2 rounded-lg"
+            className="bg-gray-700 hover:bg-gray-600 text-white px-4 py-2 rounded-lg"
           >
             Ask
           </button>
