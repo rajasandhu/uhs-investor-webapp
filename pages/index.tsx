@@ -67,7 +67,9 @@ export default function Home() {
             {messages.map((msg, idx) => (
               <div
                 key={idx}
-                className={\`bg-gray-800/30 whitespace-pre-wrap px-4 py-3 rounded-lg max-w-[80%] \${msg.role === "user" ? "self-end ml-auto" : "self-start"}\`}
+                className={`bg-gray-800/30 whitespace-pre-wrap px-4 py-3 rounded-lg max-w-[80%] ${
+                  msg.role === "user" ? "self-end ml-auto" : "self-start"
+                }`}
               >
                 <strong className="block mb-1 text-xs uppercase tracking-wide text-gray-600">
                   {msg.role === "user" ? "You" : "SentientGPT"}
